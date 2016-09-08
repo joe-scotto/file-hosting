@@ -1,0 +1,104 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400,900|Lobster|Ubuntu:300,400,700';
+body {
+  background: #ececec;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  color: #525252;
+}
+
+.hidden {
+  display: none;
+}
+
+#login .login_box {
+  background: white;
+  max-width: 500px;
+  margin: 25px auto 15px auto;
+  padding: 25px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  float: none;
+}
+#login .login_box h1 {
+  margin: 0 0 25px 0;
+  text-align: center;
+  font-family: "Lobster", cursive;
+  font-size: 50px;
+}
+#login .login_box hr {
+  margin: 0 0 25px 0;
+}
+#login .login_box label {
+  margin: 10px 0 0 0;
+}
+#login .login_box input[type="submit"] {
+  margin: 15px 0 0 0;
+  width: 100%;
+  height: 30px;
+  border: none;
+  background: #43c0ee;
+  color: white;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+}
+#login .login_box input[type="submit"]:hover {
+  background: #43ee8b;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+@media screen and (max-width: 550px) {
+  #login .login_box {
+    max-width: 88%;
+  }
+}
+
+#panel .panel_heading h1 {
+  margin: 25px 0 0 0;
+  float: left;
+}
+#panel .panel_buttons ul {
+  margin: 25px 0 0 0;
+  padding: 0;
+  list-style: none;
+  float: right;
+}
+#panel .panel_buttons ul li {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 42px;
+  height: 0;
+}
+#panel .panel_buttons ul li:hover {
+  cursor: pointer;
+  color: #d2d2d2;
+}
+#panel .panel_buttons ul label:hover {
+  cursor: pointer;
+}
+#panel .breadcrumb {
+  margin: 25px auto;
+}
+@media screen and (max-width: 767px) {
+  #panel .panel_heading h1 {
+    margin: 25px auto;
+    text-align: center;
+    float: none;
+  }
+  #panel .panel_buttons ul {
+    margin: 0 auto 0 auto;
+    float: none;
+    text-align: center;
+  }
+}

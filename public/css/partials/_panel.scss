@@ -1,0 +1,58 @@
+#panel {
+    .panel_heading {
+        h1 {
+            margin: 25px 0 0 0;
+            float: left;
+        }
+    }
+
+    .panel_buttons {
+        ul {
+            margin: 25px 0 0 0;
+            padding: 0;
+            list-style: none;
+            float: right;
+
+            li {
+                display: inline-block;
+                margin: 0 10px;
+                font-size: 42px;
+                height: 0;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $lightGrey;
+                }
+            }
+
+            label {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .breadcrumb {
+        margin: 25px auto;
+    }
+
+    // Center heading and buttons when smaller than 768px
+    @media screen and (max-width: 767px) {
+        .panel_heading {
+            h1 {
+                margin: 25px auto;
+                text-align: center;
+                float: none;
+            }
+        }
+
+        .panel_buttons {
+            ul {
+                margin: 0 auto 0 auto;
+                float: none;
+                text-align: center
+            }
+        }
+    }
+}

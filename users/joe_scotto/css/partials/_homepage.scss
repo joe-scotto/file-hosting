@@ -1,0 +1,109 @@
+.navbar {
+    padding: 12.5px;
+    background: $red;
+    color: $white;
+    border: none;
+    margin: 0;
+    -webkit-box-shadow: 0px 9px 45px -8px rgba(0,0,0,0.50);
+    -moz-box-shadow: 0px 9px 45px -8px rgba(0,0,0,0.50);
+    box-shadow: 0px 9px 45px -8px rgba(0,0,0,0.50);
+
+    .navbar-brand {
+        font-family: 'Lobster', cursive;
+        color: $white;
+        font-size: 36px;
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .navbar-toggle {
+        border: none;
+        .icon-bar {
+            color: $white;
+            background: $white;
+        }
+
+        &:hover {
+            background: transparent;
+        }
+    }
+
+    .navbar-nav > li > a {
+        color: $white;
+
+        &:hover {
+            cursor: pointer;
+            color: $white;
+            text-decoration: underline;
+        }
+    }
+}
+
+#image_section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 75px;
+    margin: 0 auto;
+    font-family: 'Ubuntu', sans-serif;
+    color: $darkGrey;
+
+    .info {
+        margin: 25px 0 0 0;
+        text-align: center;
+
+        a {
+            color: $babyBlue;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .image {
+        margin: 25px auto;
+        padding: 25px;
+        background: $white;
+        @include border-radius(10px);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .photo_info {
+        background: white;
+        padding: 25px;
+        @include border-radius(10px);
+
+        h1 {
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        p {
+            margin: 10px 0 0 0;
+        }
+
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                cursor: pointer;
+
+                img {
+                    width: 32px;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}

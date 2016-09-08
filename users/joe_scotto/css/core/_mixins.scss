@@ -1,0 +1,43 @@
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+	border-top-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-top-right-radius: $radius;
+	-webkit-bottom-right-radius: $radius;
+	-moz-top-right-radius: $radius;
+	-moz-bottom-right-radius: $radius;
+	-ms-top-right-radius: $radius;
+	-ms-bottom-right-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+	border-top-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	-webkit-top-left-radius: $radius;
+	-webkit-bottom-left-radius: $radius;
+	-moz-top-left-radius: $radius;
+	-moz-bottom-left-radius: $radius;
+	-ms-top-left-radius: $radius;
+	-ms-bottom-left-radius: $radius;
+}
+
+@mixin fadeBG ($ms) {
+	-webkit-transition: background-color $ms linear;
+    -moz-transition: background-color $ms linear;
+    -o-transition: background-color $ms linear;
+    -ms-transition: background-color $ms linear;
+    transition: background-color $ms linear;
+}
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+}

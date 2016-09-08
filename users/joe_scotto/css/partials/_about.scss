@@ -1,0 +1,10 @@
+#about_container {
+    position: relative;
+    top: 75px;
+    padding: 100px;
+
+     /* Small Screens */
+    @media all and (max-width: 767px) {
+        padding: 25px 0;
+    }
+}
