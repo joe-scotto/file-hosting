@@ -14,6 +14,9 @@ if (!$_SESSION['user_id']) {
 // Require Composer Autoloader
 require '../vendor/autoload.php';
 
+// Unset Messages
+Utilities::removeMessage();
+
 // Create new Slim instance
 $app = new \Slim\App([
     'settings' => [

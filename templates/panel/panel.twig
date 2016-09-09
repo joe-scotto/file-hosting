@@ -3,6 +3,41 @@
 {% block body %}panel{% endblock %}
 
 {% block content %}
+    <!-- Folder Modal -->
+    <div class="modal fade" id="folder_modal" tabindex="-1" role="dialog" aria-labelledby="Folder Modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {% if not message %}
+                        <h4 class="modal-title" id="myModalLabel">Create new folder</h4>
+                    {% else %}
+                        <h4 class="modal-title" id="myModalLabel">{{ message.title }}</h4>
+                    {% endif %}
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        {% if message %}
+                            <p>{{ message.message }}</p>
+                        {% endif %}
+                        <!-- Folder Name -->
+                        <label for="folder_name">Folder Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="folder_name">
+                                <span class="glyphicon glyphicon-folder-close"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Folder Name" aria-describedby="Folder Name" name="folder_name" id="folder_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="submit_folder">Create Folder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Welcome Message -->
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 panel_heading">
         <h1>Welcome, {{ name | split(' ')[0] }}</h1>
@@ -14,7 +49,7 @@
             <li>
                 <span class="glyphicon glyphicon-upload"></span>
             </li>
-            <li>
+            <li data-toggle="modal" data-target="#folder_modal">
                 <span class="glyphicon glyphicon-folder-close"></span>
             </li>
             <li>
@@ -35,8 +70,28 @@
         </ol>
     </div>
 
+    <!-- Files and Folders -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <ul class="list-group">
+            {% for file in files %}
+                <li class="list-group-item">
+                    <span class="badge">14</span>
+                    <a href="{{ url }}/{{ file }}">{{ file }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
     <!-- Hidden logout form -->
     <form method="post" action="" class="hidden">
         <input type="submit" name="logout" id="logout">
     </form>
+{% endblock %}
+
+{% block pageSpecificJs %}
+    {% if message %}
+        <script>
+            $('#folder_modal').modal('show')   
+        </script>
+    {% endif %}
 {% endblock %}
