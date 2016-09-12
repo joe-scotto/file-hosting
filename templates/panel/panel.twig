@@ -17,7 +17,7 @@
                 </div>
                 <form action="" method="post">
                     <div class="modal-body">
-                        {% if message %}
+                        {% if message.modal == "folder_modal" %}
                             <p>{{ message.message }}</p>
                         {% endif %}
                         <!-- Folder Name -->

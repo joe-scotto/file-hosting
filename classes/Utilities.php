@@ -6,11 +6,12 @@ class Utilities {
      * @param string $title Message title
      * @param string $message Message message
      */
-    public static function setMessage ($title, $message) {
+    public static function setMessage ($title, $message, $modal) {
         // Set Message
         $_SESSION['message'] = array(
             'title' => $title,
-            'message' => $message
+            'message' => $message,
+            'modal' => $modal
         );
 
         // Set Cookie        

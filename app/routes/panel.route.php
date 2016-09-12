@@ -40,10 +40,6 @@ $app->get('/panel/[{path:.*}]', function ($request, $response) use ($panel, $use
         // Define files
         $files = $panel->listDirectory($request->getAttribute('path'));
 
-        var_dump($files);
-
-        echo $request->getUri()->getPath();
-
         // Return panel view with data
         return $this->view->render($response, 'panel/panel.twig', [
             'name' => $user['name'],
@@ -71,16 +67,25 @@ $app->post('/panel', function ($request, $response) use ($panel) {
     }
 
     if (isset($params['submit_folder'])) {
-        // Check to see if new folder was created, redirect to original page if not.
-        if ($panel->createNewDirectory($params['folder_name'])) {
-            // Redirect to new folder
-            return $response->withHeader('Location', '/panel/' . $params['folder_name']);
+        // Check to make sure folder name is not empty
+        if ($params['folder_name']) {
+            // Check to see if new folder was created, redirect to original page if not.
+            if ($panel->createNewDirectory($params['folder_name'])) {
+                // Redirect to new folder
+                return $response->withHeader('Location', '/panel/' . $params['folder_name']);
+            } else {
+                // Set error message 
+                Utilities::setMessage("Whoa!", "That folder already exists, please choose another name.", "folder_modal");
+
+                // Redirect to original page
+                return $response->withHeader('Location', '/panel');
+            } 
         } else {
             // Set error message 
-            Utilities::setMessage("Whoa!", "That directory already exists, please choose another name.");
-
+            Utilities::setMessage("Whoa!", "You cannot create a folder without a name", "folder_modal");
+            
             // Redirect to original page
-            return $response->withHeader('Location', '/panel');
+            return $response->withHeader('Location', $request->getUri()->getPath());
         }
     }
 });
@@ -96,13 +101,22 @@ $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
     }
 
     if (isset($params['submit_folder'])) {
-        // Check to see if new folder was created, redirect to original page if not.
-        if ($panel->createNewDirectory($params['folder_name'], $request->getUri()->getPath())) {
-            // Redirect to new folder
-            return $response->withHeader('Location', $request->getUri()->getPath() . '/' . $params['folder_name']);
+        // Check to make sure folder name is not empty
+        if ($params['folder_name']) {
+            // Check to see if new folder was created, redirect to original page if not.
+            if ($panel->createNewDirectory($params['folder_name'], $request->getUri()->getPath())) {
+                // Redirect to new folder
+                return $response->withHeader('Location', $request->getUri()->getPath() . '/' . $params['folder_name']);
+            } else {
+                // Set error message 
+                Utilities::setMessage("Whoa!", "That folder already exists, please choose another name.", "folder_modal");
+                
+                // Redirect to original page
+                return $response->withHeader('Location', $request->getUri()->getPath());
+            }
         } else {
             // Set error message 
-            Utilities::setMessage("Whoa!", "That directory already exists, please choose another name.");
+            Utilities::setMessage("Whoa!", "You cannot create a folder without a name", "folder_modal");
             
             // Redirect to original page
             return $response->withHeader('Location', $request->getUri()->getPath());
