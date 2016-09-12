@@ -41,18 +41,29 @@ class Panel {
         
     }
 
+    /**
+     * Lists files and folders in a directory
+     * @param string $directory Where to start looking after the basepath
+     * @return array Contains all files and folders found in a specified directory
+     */
     public function listDirectory ($directory = null) {   
-        // Scan directory
+        // Scan Directory
         $files = scandir($this->_basePath . $directory);
 
-        // Excluded files array
+        // Excluded files array (Case-Sensitive)
         $excluded = array(
             '.',
             '..'
         );
 
-        // Return files
-        return array_values(array_diff($files, $excluded));
+        // Remove excluded files from $files
+        $files = array_diff($files, $excluded);
+
+        // Reindex Array
+        $files = array_values($files);
+
+        // Return Files
+        return $files;
     }
 
     /**

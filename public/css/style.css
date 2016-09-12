@@ -102,3 +102,42 @@ body {
     text-align: center;
   }
 }
+
+#admin .admin_heading h1 {
+  margin: 25px 0 0 0;
+  float: left;
+}
+#admin .admin_buttons ul {
+  margin: 25px 0 0 0;
+  padding: 0;
+  list-style: none;
+  float: right;
+}
+#admin .admin_buttons ul li {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 42px;
+  height: 0;
+}
+#admin .admin_buttons ul li:hover {
+  cursor: pointer;
+  color: #d2d2d2;
+}
+#admin .admin_buttons ul label:hover {
+  cursor: pointer;
+}
+#admin .breadcrumb {
+  margin: 25px auto;
+}
+@media screen and (max-width: 767px) {
+  #admin .admin_heading h1 {
+    margin: 25px auto;
+    text-align: center;
+    float: none;
+  }
+  #admin .admin_buttons ul {
+    margin: 0 auto 0 auto;
+    float: none;
+    text-align: center;
+  }
+}

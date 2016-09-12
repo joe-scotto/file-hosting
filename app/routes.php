@@ -19,3 +19,6 @@ include 'routes/home.route.php';
 
 // Panel
 include 'routes/panel.route.php';
+
+// Admin
+include 'routes/admin.route.php';

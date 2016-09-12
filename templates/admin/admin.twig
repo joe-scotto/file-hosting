@@ -1,0 +1,31 @@
+{% extends 'main.twig' %}
+{% block title %} Welcome, {{ name | split(' ')[0] }} {% endblock %}
+{% block body %}admin{% endblock %}
+
+{% block content %}
+    <!-- Welcome Message -->
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 admin_heading">
+        <h1>Welcome, {{ name | split(' ')[0] }}</h1>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 admin_buttons">
+        <ul>
+            <li>
+                <label for="logout">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Hidden logout form -->
+    <form method="post" action="" class="hidden">
+        <input type="submit" name="logout" id="logout">
+    </form>
+{% endblock %}
+
+{% block pageSpecificJs %}
+  
+{% endblock %}
