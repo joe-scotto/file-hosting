@@ -199,8 +199,5 @@ class User {
     public static function logout () {
         // Unset users id session
         unset($_SESSION['user_id']);
-
-        // Redirect to login page
-        header("Location: /");
     }
 }

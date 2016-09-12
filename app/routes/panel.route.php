@@ -64,6 +64,9 @@ $app->post('/panel', function ($request, $response) use ($panel) {
     if ($params['logout']) {
         // Logout
         User::logout();
+
+        // Redirect to login page
+        return $response->withHeader("Location", "/");
     }
 
     if (isset($params['submit_folder'])) {
@@ -98,6 +101,9 @@ $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
     if ($params['logout']) {
         // Logout
         User::logout();
+
+        // Redirect to login page
+        return $response->withHeader("Location", "/");
     }
 
     if (isset($params['submit_folder'])) {
