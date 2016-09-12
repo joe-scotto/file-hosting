@@ -16,18 +16,3 @@ $app->get('/admin', function ($request, $response) use ($user) {
         return $response->withHeader("Location", "/");
     }
 });
-
-// Post
-$app->post('/admin', function ($request, $response) {
-    // Define POST data
-    $params = $request->getParams();
-    
-    // Logout User
-    if ($params['logout']) {
-        // Logout
-        User::logout();
-
-        // Redirect to login page
-        return $response->withHeader("Location", "/");
-    }
-});

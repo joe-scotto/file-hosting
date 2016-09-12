@@ -11,6 +11,25 @@ $app->add(function ($request, $response, $next) {
         return $response->withRedirect((string)$uri, 301);
     }
 
+    // Return next middleware
+    return $next($request, $response);
+});
+
+// Middleware to logout
+$app->add(function ($request, $response, $next) {
+    // Define POST data
+    $params = $request->getParams();
+    
+    // Logout User
+    if ($params['logout']) {
+        // Logout
+        User::logout();
+
+        // Redirect to login page
+        return $response->withHeader("Location", "/");
+    }
+
+    // Return next middleware
     return $next($request, $response);
 });
 

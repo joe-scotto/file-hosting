@@ -60,15 +60,6 @@ $app->post('/panel', function ($request, $response) use ($panel) {
     // Define POST data
     $params = $request->getParams();
 
-    // Logout User
-    if ($params['logout']) {
-        // Logout
-        User::logout();
-
-        // Redirect to login page
-        return $response->withHeader("Location", "/");
-    }
-
     if (isset($params['submit_folder'])) {
         // Check to make sure folder name is not empty
         if ($params['folder_name']) {
@@ -96,15 +87,6 @@ $app->post('/panel', function ($request, $response) use ($panel) {
 $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
     // Define POST data
     $params = $request->getParams();
-
-    // Logout User
-    if ($params['logout']) {
-        // Logout
-        User::logout();
-
-        // Redirect to login page
-        return $response->withHeader("Location", "/");
-    }
 
     if (isset($params['submit_folder'])) {
         // Check to make sure folder name is not empty
