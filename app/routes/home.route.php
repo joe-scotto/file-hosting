@@ -15,12 +15,12 @@ $app->get('/', function ($request, $response) {
 // Post 
 $app->post('/', function ($request, $response) {
     // Define POST data
-    $postData = $request->getParams();
+    $params = $request->getParams();
 
     // Verify required fields are not empty
-    if (User::checkAllFieldsNotEmpty($postData)) {
+    if (Utilities::checkAllFieldsNotEmpty($params)) {
         // Attempt Login
-        if (User::attemptLogin($postData)) {
+        if (User::attemptLogin($params)) {
             // Redirect after successful login
             return $response->withHeader('Location', '/panel');
         } else {
@@ -32,7 +32,8 @@ $app->post('/', function ($request, $response) {
     } else {
         // Return login view with error if one is empty
         return $this->view->render($response, 'home/login.twig', [
-            'error' => "Please fill in all fields"
+            'error' => "Please fill in all fields",
+            'username' => $params['username']
         ]);
     }
 });

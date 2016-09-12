@@ -3,22 +3,85 @@
 {% block body %}admin{% endblock %}
 
 {% block content %}
-    <!-- Welcome Message -->
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 admin_heading">
-        <h1>Welcome, {{ name | split(' ')[0] }}</h1>
+    <!-- Admin Modal -->
+    <div class="modal fade" id="admin_modal" tabindex="-1" role="dialog" aria-labelledby="Admin Modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {% if not message %}
+                        <h4 class="modal-title">Message Modal</h4>
+                    {% else %}
+                        <h4 class="modal-title">{{ message.title }}</h4>
+                    {% endif %}
+                </div>
+                <div class="modal-body">
+                    {% if message.modal == "admin_modal" %}
+                        <p>{{ message.message }}</p>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="submit_folder">Create Folder</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Buttons -->
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 admin_buttons">
-        <ul>
-            <li>
-                <label for="logout">
-                    <span class="glyphicon glyphicon-log-out"></span>
-                </label>
-            </li>
-        </ul>
+    <!-- Admin Panel -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 login_box">
+        <h1>Admin</h1>
+        <hr />
+        <form method="post" action="">
+            <!-- Name -->
+            <label for="name">Name</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="name">
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Name" aria-describedby="name" name="name" id="name" value="{{ form.name }}">
+            </div>
+            <!-- Username -->
+            <label for="username">Username</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="username">
+                    <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="username" name="username" id="username" value="{{ form.username }}">
+            </div>
+            <!-- Password -->
+            <label for="password">Password</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="password">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password" class="form-control" placeholder="password" aria-describedby="password" name="password" id="password">
+            </div>
+            <!-- Admin -->
+            <label for="admin">Admin</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    {% if not form.admin %}
+                        <input type="checkbox" aria-label="Admin" id="admin" name="admin">
+                    {% else %}
+                        <input type="checkbox" aria-label="Admin" id="admin" name="admin" checked>
+                    {% endif %}
+                </span>
+                <input type="text" class="form-control" disabled value="Grant user admin privileges">
+            </div>
+
+            <!-- Submit -->
+            <input type="submit" name="submit" value="Add User">
+        </form>
+        
     </div>
 
+    <!-- Logout Button -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <label for="logout">
+            <a>Logout</a>
+        </label>
+    </div>
 
     <!-- Hidden logout form -->
     <form method="post" action="" class="hidden">
@@ -27,5 +90,9 @@
 {% endblock %}
 
 {% block pageSpecificJs %}
-  
+    {% if message %}
+        <script>
+            $('#admin_modal').modal('show')   
+        </script>
+    {% endif %}
 {% endblock %}

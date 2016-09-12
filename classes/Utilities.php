@@ -48,4 +48,21 @@ class Utilities {
             unset($_COOKIE['sessionPersist']);
         }
     }
+
+    /**
+     * Verifies all supplied fields contain data
+     * @param  mixed $fields Array of fields and their values
+     * @return bool True if all are filled in, false if not
+     */
+    public static function checkAllFieldsNotEmpty ($fields) {
+        // Loop through each field and fail if one is empty
+        foreach ($fields as $field) {
+            if (!$field) {
+                return false;
+            }
+        }
+
+        // Return true if all fields are filled in
+        return true;
+    }
 }
