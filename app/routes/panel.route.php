@@ -60,6 +60,7 @@ $app->post('/panel', function ($request, $response) use ($panel) {
     // Define POST data
     $params = $request->getParams();
 
+    // Check if new folder form was sent
     if (isset($params['submit_folder'])) {
         // Check to make sure folder name is not empty
         if ($params['folder_name']) {

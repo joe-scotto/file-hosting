@@ -39,7 +39,7 @@
     </div>
 
     <!-- Upload Modal -->
-    <div class="modal fade" id="upload_modal" tabindex="-1" role="dialog" aria-labelledby="Folder Modal">
+    <div class="modal fade" id="upload_modal" tabindex="-1" role="dialog" aria-labelledby="File Modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,23 +50,23 @@
                         <h4 class="modal-title" id="myModalLabel">{{ message.title }}</h4>
                     {% endif %}
                 </div>
-                <form action="" method="post">
+                <form method="post" action="" enctype="multipart/form-data">
                     <div class="modal-body">
                         {% if message.modal == "upload_modal" %}
                             <p>{{ message.message }}</p>
                         {% endif %}
-                        <!-- Folder Name -->
-                        <label for="folder_name">Select File</label>
+                        <!-- Select File -->
+                        <label for="files">Select File(s)</label>
                         <div class="input-group">
-                            <span class="input-group-addon" id="folder_name">
+                            <span class="input-group-addon" id="files">
                                 <span class="glyphicon glyphicon-file"></span>
                             </span>
-                            <input type="file" class="form-control" placeholder="Folder Name" aria-describedby="Folder Name" name="folder_name" id="folder_name">
+                            <input type="file" name="files[]" class="form-control" aria-describedby="Files" id="files" multiple>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name="submit_folder">Upload</button>
+                        <button type="submit" class="btn btn-primary" name="submit_files">Upload</button>
                     </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
 
     <!-- Welcome Message -->
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 panel_heading">
-        <h1>Welcome, {{ name | split(' ')[0] }}</h1>{{ superman }}
+        <h1>Welcome, {{ name | split(' ')[0] }}</h1>
     </div>
 
     <!-- Buttons -->
@@ -121,12 +121,4 @@
     <form method="post" action="" class="hidden">
         <input type="submit" name="logout" id="logout">
     </form>
-{% endblock %}
-
-{% block pageSpecificJs %}
-    {% if message %}
-        <script>
-            $('#folder_modal').modal('show')   
-        </script>
-    {% endif %}
 {% endblock %}

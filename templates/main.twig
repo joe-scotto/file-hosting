@@ -17,6 +17,30 @@
         {% endblock %}
     </header>
 
+    <!-- Message Modal -->
+    <div class="modal fade" id="message_modal" tabindex="-1" role="dialog" aria-labelledby="Message Modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {% if not message %}
+                        <h4 class="modal-title">Message Modal</h4>
+                    {% else %}
+                        <h4 class="modal-title">{{ message.title }}</h4>
+                    {% endif %}
+                </div>
+                <div class="modal-body">
+                    {% if message.modal == "message_modal" %}
+                        <p>{{ message.message }}</p>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main>
         <div class="container">
@@ -39,6 +63,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    {% if message %}
+        <script>
+            $('#{{ message.modal }}').modal('show')   
+        </script>
+    {% endif %}
+
     {% block pageSpecificJs %}
 
     {% endblock %}
