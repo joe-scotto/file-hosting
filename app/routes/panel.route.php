@@ -98,6 +98,12 @@ $app->post('/panel', function ($request, $response) use ($panel) {
         } else {
             // Upload Files
             $panel->uploadFiles($files);
+
+            // Set success message 
+            Utilities::setMessage("Great!", "Upload was successful!", "message_modal");
+
+            // Redirect to original page
+            return $response->withHeader('Location', $request->getUri()->getPath());
         }
     }
 });
@@ -143,6 +149,12 @@ $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
         } else {
             // Upload Files
             $panel->uploadFiles($files, $request->getUri()->getPath());
+
+            // Set success message 
+            Utilities::setMessage("Great!", "Upload was successful!", "message_modal");
+
+            // Redirect to original page
+            return $response->withHeader('Location', $request->getUri()->getPath());
         }
     }
 });
