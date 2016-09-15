@@ -103,6 +103,12 @@ class Panel {
         }
     }
 
+    /**
+     * Uploads a single file or multiple depending on length of array
+     * @param mixed $files Array containing information about the files
+     * @param string $path Where to upload the file
+     * @return void
+     */
     public function uploadFiles ($files, $path = null) {
         // Check if path is root or subdirectory
         if (!$path) {
