@@ -77,10 +77,27 @@ $app->post('/panel', function ($request, $response) use ($panel) {
             } 
         } else {
             // Set error message 
-            Utilities::setMessage("Whoa!", "You cannot create a folder without a name", "folder_modal");
+            Utilities::setMessage("Whoa!", "You cannot create a folder without a name.", "folder_modal");
             
             // Redirect to original page
             return $response->withHeader('Location', $request->getUri()->getPath());
+        }
+    }
+
+    // Check if upload form was sent 
+    if (isset($params['submit_files'])) {
+        // Get files from form 
+        $files = $request->getUploadedFiles()['files'];
+
+        if (!$files[0]->file) {
+            // Set error message 
+            Utilities::setMessage("Whoa!", "You must select a file to upload.", "upload_modal");
+            
+            // Redirect to original page
+            return $response->withHeader('Location', $request->getUri()->getPath());
+        } else {
+            // Upload Files
+            $panel->uploadFiles($files);
         }
     }
 });
@@ -109,6 +126,23 @@ $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
             
             // Redirect to original page
             return $response->withHeader('Location', $request->getUri()->getPath());
+        }
+    }
+
+    // Check if upload form was sent 
+    if (isset($params['submit_files'])) {
+        // Get files from form 
+        $files = $request->getUploadedFiles()['files'];
+
+        if (!$files[0]->file) {
+            // Set error message 
+            Utilities::setMessage("Whoa!", "You must select a file to upload.", "upload_modal");
+            
+            // Redirect to original page
+            return $response->withHeader('Location', $request->getUri()->getPath());
+        } else {
+            // Upload Files
+            $panel->uploadFiles($files, $request->getUri()->getPath());
         }
     }
 });

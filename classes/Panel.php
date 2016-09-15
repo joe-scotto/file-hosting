@@ -37,10 +37,6 @@ class Panel {
         return $formattedBreadcrumbs;
     }
 
-    private function checkIfDirectory ($file) {
-        
-    }
-
     /**
      * Lists files and folders in a directory
      * @param string $directory Where to start looking after the basepath
@@ -103,6 +99,55 @@ class Panel {
             } else {
                 // Return False
                 return false;
+            }
+        }
+    }
+
+    public function uploadFiles ($files, $path = null) {
+        // Check if path is root or subdirectory
+        if (!$path) {
+            // Define Path
+            $path = $this->_basePath;
+
+            // Upload multiple if more than one
+            if (count($files) > 1) {
+                foreach ($files as $file) {
+                    if ($file->getError() === UPLOAD_ERR_OK) {
+                        $uploadFileName = $file->getClientFilename();
+                        $file->moveTo($path . $uploadFileName);
+                    }
+                }
+            } else {
+                // Grab first index
+                $files = $files[0];
+
+                // Upload File
+                if ($files->getError() === UPLOAD_ERR_OK) {
+                    $uploadFileName = $files->getClientFilename();
+                    $files->moveTo($path . $uploadFileName);
+                }
+            }
+        } else {
+            // Define Path
+            $path = $this->_basePath . str_replace('/panel', '', $path) . '/' . $name;
+
+            // Upload multiple if more than one
+            if (count($files) > 1) {
+                foreach ($files as $file) {
+                    if ($file->getError() === UPLOAD_ERR_OK) {
+                        $uploadFileName = $file->getClientFilename();
+                        $file->moveTo($path . $uploadFileName);
+                    }
+                }
+            } else {
+                // Grab first index
+                $files = $files[0];
+
+                // Upload file
+                if ($files->getError() === UPLOAD_ERR_OK) {
+                    $uploadFileName = $files->getClientFilename();
+                    $files->moveTo($path . $uploadFileName);
+                }
             }
         }
     }
