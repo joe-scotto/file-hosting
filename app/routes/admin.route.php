@@ -30,16 +30,23 @@ $app->post('/admin', function ($request, $response) {
             if (Admin::checkUsername($params['username'])) {
                 // Check if directory is created
                 if (Admin::createUsersDirectory($params['username'])) {
+                    // Attempt to create user
                     if (Admin::createNewUser($params['name'], $params['username'], $params['password'], $params['admin'])) {
                         Utilities::setMessage("Excellent!", "User was created successfully.", "admin_modal");
+                    } else {
+                        // Return error if user is not created
+                        Utilities::setMessage("Whoa!", "User could not be created due to an unknown error.", "admin_modal");
                     }
                 } else {
-                    Utilities::setMessage("Whoa!", "Directory creation failed.", "admin_modal");
+                    // Return error if directory could not be created
+                    Utilities::setMessage("Whoa!", "Could not create user because the directory already exists.", "admin_modal");
                 }
             } else {
+                // Return error if username is in use
                 Utilities::setMessage("Whoa!", "Username in use.", "admin_modal");
             }
         } else {
+            // Return error if all fields are not filled in
             Utilities::setMessage("Whoa!", "Please fill in all fields", "admin_modal");
         }
 

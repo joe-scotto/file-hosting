@@ -38,15 +38,50 @@
         </div>
     </div>
 
+    <!-- Upload Modal -->
+    <div class="modal fade" id="upload_modal" tabindex="-1" role="dialog" aria-labelledby="Folder Modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {% if not message %}
+                        <h4 class="modal-title" id="myModalLabel">Upload new file</h4>
+                    {% else %}
+                        <h4 class="modal-title" id="myModalLabel">{{ message.title }}</h4>
+                    {% endif %}
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        {% if message.modal == "upload_modal" %}
+                            <p>{{ message.message }}</p>
+                        {% endif %}
+                        <!-- Folder Name -->
+                        <label for="folder_name">Select File</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="folder_name">
+                                <span class="glyphicon glyphicon-file"></span>
+                            </span>
+                            <input type="file" class="form-control" placeholder="Folder Name" aria-describedby="Folder Name" name="folder_name" id="folder_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="submit_folder">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Welcome Message -->
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 panel_heading">
-        <h1>Welcome, {{ name | split(' ')[0] }}</h1>
+        <h1>Welcome, {{ name | split(' ')[0] }}</h1>{{ superman }}
     </div>
 
     <!-- Buttons -->
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 panel_buttons">
         <ul>
-            <li>
+            <li data-toggle="modal" data-target="#upload_modal">
                 <span class="glyphicon glyphicon-upload"></span>
             </li>
             <li data-toggle="modal" data-target="#folder_modal">
