@@ -56,13 +56,8 @@
                             <p>{{ message.message }}</p>
                         {% endif %}
                         <!-- Select File -->
-                        <label for="files">Select File(s)</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="files">
-                                <span class="glyphicon glyphicon-file"></span>
-                            </span>
-                            <input type="file" name="files[]" class="form-control" aria-describedby="Files" id="files" multiple>
-                        </div>
+                        <label for="files" class="file_selector">Select File(s)</label>
+                        <input type="file" name="files[]" aria-describedby="Files" id="files" multiple>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

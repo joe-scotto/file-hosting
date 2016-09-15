@@ -9,8 +9,17 @@ body {
     display: none;
 }
 
-input[type="submit"] {
-    cursor: pointer;
+button[type="submit"], input[type="submit"] {
+    background: $babyBlue;
+    border: none;
+    @include fadeBG(200ms);
+    @include border-radius(5px);
+
+     &:hover {
+        cursor: pointer;
+        background: $pastelGreen;
+        @include fadeBG(200ms);
+    }
 }
 
 a {

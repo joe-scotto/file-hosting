@@ -10,8 +10,27 @@ body {
   display: none;
 }
 
-input[type="submit"] {
+button[type="submit"], input[type="submit"] {
+  background: #43c0ee;
+  border: none;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+}
+button[type="submit"]:hover, input[type="submit"]:hover {
   cursor: pointer;
+  background: #43ee8b;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
 }
 
 a {
@@ -76,6 +95,36 @@ a {
   }
 }
 
+#panel input[type="file"] {
+  display: none;
+}
+#panel .file_selector {
+  width: 100%;
+  height: 33px;
+  background: #43c0ee;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  color: white;
+  margin-bottom: 0;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+#panel .file_selector:hover {
+  cursor: pointer;
+  background: #43ee8b;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
 #panel .panel_heading h1 {
   margin: 25px 0 0 0;
   float: left;
