@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.5.42)
 # Database: file-hosting
-# Generation Time: 2016-09-12 19:09:22 +0000
+# Generation Time: 2016-09-15 16:23:07 +0000
 # ************************************************************
 
 
@@ -23,12 +23,14 @@
 # Dump of table users
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `users`;
+
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `username` varchar(18) NOT NULL DEFAULT '',
   `password` varchar(512) NOT NULL DEFAULT '',
-  `is_admin` int(11) DEFAULT '0',
+  `admin` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
