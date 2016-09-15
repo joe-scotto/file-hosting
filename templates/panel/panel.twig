@@ -121,7 +121,34 @@
 {% block js %}
     <script type="text/javascript">
 
-        
+        $("document").ready(function(){
+            // Change text of file selector when files are selected
+            $("#files").change(function() {
+                // Define files
+                var files = $(this)[0].files;
+
+                // Check if files are empty, one, or more than one
+                if (files.length < 1){
+                    // Update Text
+                    $(".file_selector").html('Select File(s)');
+
+                    // Update Background
+                    $(".file_selector").css("background", "#43C0EE");
+                } else if (files.length == 1) {
+                    // Update Text
+                    $(".file_selector").html('1 File Selected');
+
+                    // Update Background
+                    $(".file_selector").css("background", "#43EE8B");
+                } else if (files.length > 1) {
+                    // Update Text
+                    $(".file_selector").html(files.length + ' Files Selected');
+
+                    // Update Background
+                    $(".file_selector").css("background", "#43EE8B");
+                }
+            });
+        });
 
     </script>
 {% endblock %}
