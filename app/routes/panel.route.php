@@ -19,8 +19,8 @@ $app->get('/panel', function ($request, $response) use ($panel, $user) {
             'name' => $user['name'],
             'username' => $user['username'],
             'files' => $files,
-            'url' => '/panel',
-            'message' => $_SESSION['message']
+            'url' => 'panel/',
+            'message' => $_SESSION['message'],
         ]);
     }
 });

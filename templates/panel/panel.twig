@@ -105,8 +105,13 @@
         <ul class="list-group">
             {% for file in files %}
                 <li class="list-group-item">
-                    <span class="badge">14</span>
+                    <span class="badge"></span>
                     <a href="{{ url }}/{{ file }}">{{ file }}</a>
+                    <a href="/file{{ url|replace({'panel/':''}) }}/{{ file }}">
+                        <span class="badge pull-right">
+                            <span class="glyphicon glyphicon-download"></span>
+                        </span>
+                    </a>
                 </li>
             {% endfor %}
         </ul>
@@ -119,7 +124,7 @@
 {% endblock %}
 
 {% block js %}
-    <script type="text/javascript">
+    <script type="text/javascript">       
 
         $("document").ready(function(){
             // Change text of file selector when files are selected

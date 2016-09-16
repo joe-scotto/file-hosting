@@ -6,6 +6,9 @@ session_start();
 // Development error reporting without notices
 error_reporting(E_ALL ^ E_NOTICE);
 
+// Require Config
+require '../config/config.php';
+
 // Set default value for user_id if not logged in
 if (!$_SESSION['user_id']) {
     $_SESSION['user_id'] = null;

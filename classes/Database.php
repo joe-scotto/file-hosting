@@ -11,6 +11,10 @@ class Database {
     private static $_instance;
     public $pdo;
 
+    public function getConnectionProperties ($property) {
+        return $GLOBALS['config']['database'][$property];
+    }
+
     /**
      * Singleton for database connection
      * @return class Returns one instance of the Database class
@@ -29,7 +33,7 @@ class Database {
     public function getConnection() {
         try {
             //Attempt to connect
-            $this->pdo = new PDO('mysql:host=' . $this->_host . ';dbname=' . $this->_dbname , $this->_username, $this->_password);
+            $this->pdo = new PDO('mysql:host=' . $this->getConnectionProperties('host') . ';dbname=' . $this->getConnectionProperties('database') , $this->getConnectionProperties('username'), $this->getConnectionProperties('password'));
 
             //Return connection
             return $this->pdo;

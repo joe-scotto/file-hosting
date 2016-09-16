@@ -41,3 +41,6 @@ include 'routes/panel.route.php';
 
 // Admin
 include 'routes/admin.route.php';
+
+// File
+include 'routes/file.route.php';
