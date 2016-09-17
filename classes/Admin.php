@@ -9,6 +9,71 @@ class Admin {
         return Database::getInstance()->getConnection();
     }
 
+    public static function updateCredentials ($name, $username, $password, $admin) {
+        // Format Variables
+        $name = ucwords(trim($name));
+        $username = strtolower(trim($username));
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
+        // Check if admin
+        if ($admin) {
+            $admin = 1;
+        } else {
+            $admin = 0;
+        }
+
+        // Define Query 
+        $query = "UPDATE `users` SET name = :name, password = :password, admin = :admin WHERE username = :username";
+
+        // Prepare Query
+        $preparedQuery = self::getDatabase()->prepare($query);
+
+        // Define query parameters
+        $queryParams = [
+            ':name' => $name,
+            ':username' => $username,
+            ':password' => $password,
+            ':admin' => $admin
+        ];
+
+        // Execute Query
+        if (!$preparedQuery->execute($queryParams)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Selects a user from the database
+     * @param  string $username User name of the user
+     * @return mixed Array of database columns for specified username
+     */
+    public static function selectUser ($username) {
+        // Define Query 
+        $query = "SELECT * FROM `users` WHERE username = :username";
+
+        // Prepare Query
+        $preparedQuery = self::getDatabase()->prepare($query);
+
+        // Define query parameters
+        $queryParams = [
+            ':username' => $username
+        ];
+
+        // Execute Query
+        if (!$preparedQuery->execute($queryParams)) {
+            return false;
+        }
+
+        // Return query results if found
+        if ($preparedQuery->rowCount() >= 1) {
+            return $preparedQuery->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Verifies the supplied username is not taken
      * @param  string $username Username to check
