@@ -1,12 +1,6 @@
 <?php
 
 class Database {
-    // Connection Properties
-    private $_host = '127.0.0.1';
-    private $_dbname = 'file-hosting';
-    private $_username = 'root';
-    private $_password = 'root';
-
     // Class Properties
     private static $_instance;
     public $pdo;
