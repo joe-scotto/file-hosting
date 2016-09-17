@@ -8,5 +8,6 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [x] Download Files
 - [ ] Differentiate files and folders via Bootstrap badge
 - [ ] Display number of files inside a folder
+- [x] Add admin config
 
 
