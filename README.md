@@ -10,4 +10,8 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [ ] Display number of files inside a folder
 - [x] Add admin config
 
+# Long-Term Goals
+- [ ] Add sorting to panel
+- [ ] Download entire folders
+
 
