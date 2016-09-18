@@ -107,7 +107,7 @@
                 <li class="list-group-item">
                     <span class="badge"></span>
                     <a href="{{ url }}/{{ file }}">{{ file }}</a>
-                    <a href="/file{{ url|replace({'panel/':''}) }}/{{ file }}">
+                    <a href="/file{{ url|replace({'/panel':''}) }}/{{ file }}">
                         <span class="badge pull-right">
                             <span class="glyphicon glyphicon-download"></span>
                         </span>
