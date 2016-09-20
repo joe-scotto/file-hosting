@@ -15,6 +15,8 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [ ] Add sorting to panel
 - [ ] Download entire folders
 - [ ] Add themes (Dark, Light, Etc)
+- [ ] Rename files or folders
+- [ ] Delete multiple at once
 
 # Sections to refactor / might need refactor
 
