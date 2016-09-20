@@ -132,6 +132,13 @@ a {
 #panel .badge {
   margin: 0 0 0 5px;
 }
+#panel .file {
+  color: #303030;
+}
+#panel .file:hover {
+  text-decoration: none;
+  cursor: default;
+}
 #panel .panel_buttons ul {
   margin: 25px 0 0 0;
   padding: 0;

@@ -103,21 +103,47 @@
     <!-- Files and Folders -->
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <ul class="list-group">
-            {% for file in files %}
-                <li class="list-group-item">
-                    <span class="badge"></span>
-                    <a href="{{ url }}/{{ file }}">{{ file }}</a>
-                    <a href="/file{{ url|replace({'/panel':''}) }}/{{ file }}">
+            {% for file in files.file %}
+                {% if files.dir[loop.index0] == 1 %}
+                    <li class="list-group-item">
+                        <span class="badge"></span>
+                        <a href="{{ url }}/{{ file }}">{{ file }}</a>
+                        <a href="/file{{ url|replace({'/panel':''}) }}/{{ file }}">
+                            <span class="badge pull-right">
+                                <span class="glyphicon glyphicon-download" data-toggle="tooltip" title="Download" data-placement="bottom"></span>
+                            </span>
+                        </a>
+                        <a href="/delete{{ url|replace({'/panel':''}) }}/{{ file }}?url={{ url }}" onclick="return confirm('If you delete this folder everything within it will be lost, including the folder. Are you sure?');">
+                            <span class="badge pull-right">
+                                <span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete" data-placement="bottom"></span>
+                            </span>
+                        </a>
                         <span class="badge pull-right">
-                            <span class="glyphicon glyphicon-download" data-toggle="tooltip" title="Download" data-placement="bottom"></span>
+                            <span class="glyphicon glyphicon-folder-close"></span>
                         </span>
-                    </a>
-                    <a href="/delete{{ url|replace({'/panel':''}) }}/{{ file }}?url={{ url }}" onclick="return confirm('If you delete this folder everything within it will be lost, including the folder. Are you sure?');">
+                        <span class="badge pull-right" data-toggle="tooltip" title="{{ files.count[loop.index0] }} files and/or folders in this directory." data-placement="bottom">
+                            {{ files.count[loop.index0] }}
+                        </span>
+                    </li>
+                {% else %}
+                    <li class="list-group-item">
+                        <span class="badge"></span>
+                        <a class="file">{{ file }}</a>
+                        <a href="/file{{ url|replace({'/panel':''}) }}/{{ file }}">
+                            <span class="badge pull-right">
+                                <span class="glyphicon glyphicon-download" data-toggle="tooltip" title="Download" data-placement="bottom"></span>
+                            </span>
+                        </a>
+                        <a href="/delete{{ url|replace({'/panel':''}) }}/{{ file }}?url={{ url }}" onclick="return confirm('If you delete this folder everything within it will be lost, including the folder. Are you sure?');">
+                            <span class="badge pull-right">
+                                <span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete" data-placement="bottom"></span>
+                            </span>
+                        </a>
                         <span class="badge pull-right">
-                            <span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete" data-placement="bottom"></span>
+                            <span class="glyphicon glyphicon-file"></span>
                         </span>
-                    </a>
-                </li>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

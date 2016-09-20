@@ -157,4 +157,74 @@ class Panel {
             }
         }
     }
+
+    /**
+     * Checks if a path is a directory
+     * @param mixed $files Array containing information about the paths
+     * @param string $path Where to look
+     * @return array If folder, add 1. If file, add 0
+     */
+    public function checkIfDirectory ($files, $path = null) {
+        // Define return array
+        $directories = array();
+
+        // Check if path is home or not
+        if (!$path) {
+            $path = $this->_basePath;
+        } else {
+            $path = $path = $this->_basePath . str_replace('/panel', '', $path) . '/';
+        }
+
+        // Loop through each file and check if is directory
+        foreach ($files as $file) {
+            if (is_dir($path . $file)) {
+                // Add 1 if directory
+                $directories[] = 1;
+            } else {
+                // Add 0 if file
+                $directories[] = 0;
+            }
+        }
+
+        // Return directories array
+        return $directories;
+    }
+
+    /**
+     * Counts files in a given path
+     * @param mixed $files Array containing information about the paths
+     * @param string $path Where to look
+     * @return array Count if directory, null if not
+     */
+    public function countFilesInDirectory ($files, $path = null) {
+        // Define return array
+        $count = array();
+
+        // Check if path is home or not
+        if (!$path) {
+            $path = $this->_basePath;
+        } else {
+            $path = $path = $this->_basePath . str_replace('/panel', '', $path) . '/';
+        }
+    
+        // Loop through each file and count files
+        foreach ($files as $file) {
+            if (is_dir($path . $file)) {
+                // Scan Path
+                $files = scandir($path . $file);
+
+                // Count number of files in directory minus parent / child
+                $number = count($files) - 2;
+
+                // Add to count array
+                $count[] = $number;
+            } else {
+                // Add null value if file
+                $count[] = null;
+            }
+        }
+
+        // Return count array
+        return $count;
+    }
 }

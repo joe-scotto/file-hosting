@@ -18,7 +18,11 @@ $app->get('/panel', function ($request, $response) use ($panel, $user) {
         return $this->view->render($response, 'panel/panel.twig', [
             'name' => $user['name'],
             'username' => $user['username'],
-            'files' => $files,
+            'files' => [
+                'file' => $files,
+                'count' => $panel->countFilesInDirectory($files),
+                'dir' => $panel->checkIfDirectory($files)
+            ],
             'url' => '/panel',
             'message' => $_SESSION['message'],
         ]);
@@ -48,7 +52,11 @@ $app->get('/panel/[{path:.*}]', function ($request, $response) use ($panel, $use
                 'path' => $breadcrumbs,
                 'directory' => $breadcrumbDirectory
             ),
-            'files' => $files,
+            'files' => [
+                'file' => $files,
+                'count' => $panel->countFilesInDirectory($files, $request->getAttribute('path')),
+                'dir' => $panel->checkIfDirectory($files, $request->getAttribute('path'))
+            ],
             'url' => $request->getUri()->getPath(),
             'message' => $_SESSION['message']
         ]);
