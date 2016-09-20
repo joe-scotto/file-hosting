@@ -4,7 +4,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 
 # To-Do
 
-- [ ] Delete file or folder
+- [x] Delete file or folder
 - [x] Download Files
 - [ ] Differentiate files and folders via Bootstrap badge
 - [ ] Display number of files inside a folder
@@ -15,3 +15,9 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [ ] Add sorting to panel
 - [ ] Download entire folders
 - [ ] Add themes (Dark, Light, Etc)
+
+# Sections to refactor / might need refactor
+
+- [ ] Admin
+- [ ] Create User (Admin)
+- [ ] Delete Route

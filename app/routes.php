@@ -43,4 +43,4 @@ include 'routes/panel.route.php';
 include 'routes/admin.route.php';
 
 // File
-include 'routes/file.route.php';
+include 'routes/filehandling.route.php';
