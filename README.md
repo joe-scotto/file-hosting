@@ -10,13 +10,16 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [x] Display number of files inside a folder
 - [x] Add admin config
 
-# Post-Launch Goals
+# Features to be added after initial release
 
 - [ ] Add sorting to panel
 - [ ] Download entire folders
 - [ ] Add themes (Dark, Light, Etc)
 - [ ] Rename files or folders
 - [ ] Delete multiple at once
+- [ ] Move files via checkbox
+- [ ] Upload folder via input
+- [ ] Upload progress indicator
 
 # Sections to refactor / might need refactor
 
