@@ -135,7 +135,7 @@ class Panel {
             }
         } else {
             // Define Path
-            $path = $this->_basePath . str_replace('/panel', '', $path) . '/' . $name;
+            $path = $this->_basePath . str_replace('/panel/', '', $path) . '/' . $name;
 
             // Upload multiple if more than one
             if (count($files) > 1) {
@@ -172,7 +172,7 @@ class Panel {
         if (!$path) {
             $path = $this->_basePath;
         } else {
-            $path = $path = $this->_basePath . str_replace('/panel', '', $path) . '/';
+            $path = $path = $this->_basePath . str_replace('/panel/', '', $path) . '/';
         }
 
         // Loop through each file and check if is directory
@@ -204,7 +204,7 @@ class Panel {
         if (!$path) {
             $path = $this->_basePath;
         } else {
-            $path = $path = $this->_basePath . str_replace('/panel', '', $path) . '/';
+            $path = $path = $this->_basePath . str_replace('/panel/', '', $path) . '/';
         }
     
         // Loop through each file and count files
