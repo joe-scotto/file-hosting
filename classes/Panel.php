@@ -77,10 +77,12 @@ class Panel {
             // Verify path does not exist
             if (!is_dir($path)) {
                 // Create Directory
-                mkdir($path);
-
-                // Return True
-                return true;
+                if (mkdir($path)) {
+                    // Return True
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 // Return False
                 return false;
@@ -92,10 +94,12 @@ class Panel {
             // Verify path does not exist
             if (!is_dir($path)) {
                 // Create Directory
-                mkdir($path);
-
-                // Return True
-                return true;
+                if (mkdir($path)) {
+                    // Return True
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 // Return False
                 return false;
@@ -226,5 +230,30 @@ class Panel {
 
         // Return count array
         return $count;
+    }
+
+    /**
+     * Verifies the folder name fits specific parameters
+     * @param string $name Name of the folder
+     * @return bool False if failure, true if success
+     */
+    public function checkFolderName ($name) {
+        // Verify string does not start with a dot 
+        if (substr($name, 0, 1) === ".") {
+            return false;
+        }
+
+        // Check that string only contains alphanumeric characters and dash, dot, and underscore
+        if (!preg_match('/^[a-z0-9 .\-\_]+$/i', $name)) {
+            return false;
+        }
+
+        // Check that string is not just dots and spaces
+        if (preg_match('/^[ \ .]+$/i', $name)) {
+            return false;
+        }
+
+        // Return true if all cases pass
+        return true;
     }
 }

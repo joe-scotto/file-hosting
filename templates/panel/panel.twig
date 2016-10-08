@@ -18,7 +18,17 @@
                 <form action="" method="post">
                     <div class="modal-body">
                         {% if message.modal == "folder_modal" %}
-                            <p>{{ message.message }}</p>
+                            {% if message.message != "param_error" %}
+                                <p>{{ message.message }}</p>
+                            {% else %}
+                                <p>Folders must follow these naming conventions:</p>
+                                <ul>
+                                    <li>Alphanumeric (a-z, 0-9, case-insensitive)</li>
+                                    <li>Can use a dash, dot, or underscore</li>
+                                    <li>Cannot contain only dots and spaces</li>
+                                    <li>Cannot start with a dot</li>
+                                </ul>
+                            {% endif %}
                         {% endif %}
                         <!-- Folder Name -->
                         <label for="folder_name">Folder Name</label>
@@ -26,7 +36,7 @@
                             <span class="input-group-addon" id="folder_name">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                             </span>
-                            <input type="text" class="form-control" placeholder="Folder Name" aria-describedby="Folder Name" name="folder_name" id="folder_name">
+                            <input type="text" class="form-control" placeholder="Folder Name" aria-describedby="Folder Name" name="folder_name" id="folder_name" value="{{ folder_name }}">
                         </div>
                     </div>
                     <div class="modal-footer">
