@@ -9,6 +9,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [x] Differentiate files and folders via Bootstrap badge
 - [x] Display number of files inside a folder
 - [x] Add admin config
+- [ ] Automatically create "users" database if it doesn't exist
 
 # Features to be added after initial release
 
