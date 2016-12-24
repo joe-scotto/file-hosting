@@ -45,7 +45,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 
 # Options
 
-If you wish, you can add other users as either an admin or non-admin by visiting your */admin*. In order to create other users, you must be an admin. 
+If you wish, you can add other users as either an admin or non-admin by visiting your **/admin**. In order to create other users, you must be an admin. 
 
 # To-Do
 
