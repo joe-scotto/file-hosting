@@ -81,11 +81,49 @@ class Utilities {
         // Switch on identifier
         switch ($identifier) {
             case 'g':
-                $value *= 1000;
+                $value *= 1024;
             case 'm':
-                $value *= 1000;
+                $value *= 1024;
             case 'k':
-                $value *= 1000;
+                $value *= 1024;
+        }
+
+        // Return result in bytes
+        return $value;
+    }
+
+    /**
+     * Converts abbreviated data type to human readable
+     * @param  string $value Value to convert
+     * @return string Formatted Value
+     */
+    public static function convertDataType ($value) {
+        // Trim whitespace
+        $value = trim($value);
+
+        // Grab identifier for switch
+        $identifier = strtolower($value[strlen($value)-1]);
+
+        // Switch on identifier
+        switch ($identifier) {
+            case 'g':
+                $value = str_replace("g", "", strtolower($value)) . "gb";
+                break;
+            case 'm':
+                    $value = str_replace("m", "", strtolower($value)) . "mb";
+                break;
+            case 'k':
+                $value = str_replace("k", "", strtolower($value)) . "kb";
+                break;
+            case 'gb':
+                $value = str_replace("gb", "", strtolower($value)) . "gb";
+                break;
+            case 'mb':
+                $value = str_replace("mb", "", strtolower($value)) . "mb";
+                break;
+            case 'kb':
+                $value = str_replace("kb", "", strtolower($value)) . "kb";
+                break;
         }
 
         // Return result in bytes

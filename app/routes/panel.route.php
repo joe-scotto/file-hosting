@@ -73,7 +73,7 @@ $app->post('/panel', function ($request, $response) use ($panel) {
     // Verify user did not exceed max upload
     if ($_SERVER['CONTENT_LENGTH'] > $maxUploadSize) {
         // Set error message 
-        Utilities::setMessage("Whoa!", "You're attempting to upload a file or files that are too large, please try again with a smaller upload.", "message_modal");
+        Utilities::setMessage("Whoa!", "You're attempting to upload a file or files that are too large, please try again with a smaller upload. The maximum upload size is: " . Utilities::convertDataType(ini_get('post_max_size')) . ".", "message_modal");
         
         // Redirect to original page
         return $response->withHeader('Location', $request->getUri()->getPath());
@@ -152,12 +152,12 @@ $app->post('/panel/[{path:.*}]', function ($request, $response) use ($panel) {
     // Verify user did not exceed max upload
     if ($_SERVER['CONTENT_LENGTH'] > $maxUploadSize) {
         // Set error message 
-        Utilities::setMessage("Whoa!", "You're attempting to upload a file or files that are too large, please try again with a smaller upload.", "message_modal");
+        Utilities::setMessage("Whoa!", "You're attempting to upload a file or files that are too large, please try again with a smaller upload. The maximum upload size is: " . Utilities::convertDataType(ini_get('post_max_size')) . ".", "message_modal");
         
         // Redirect to original page
         return $response->withHeader('Location', $request->getUri()->getPath());
     }
-    
+
     // Define POST data
     $params = $request->getParams();
 
