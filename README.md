@@ -6,6 +6,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 
 * PHP 5.3 or newer
 * MySQL Database 
+* Webserver capable of having a custom document root
 
 # Installation
 
