@@ -78,6 +78,9 @@ class Panel {
             if (!is_dir($path)) {
                 // Create Directory
                 if (mkdir($path)) {
+                    // Modify directory permissions 
+                    chmod($path, 0744);
+                    
                     // Return True
                     return true;
                 } else {
@@ -105,6 +108,55 @@ class Panel {
                 return false;
             }
         }
+    }
+
+    public function checkFileSize ($files, $path = null) {
+        // Check if path is root or subdirectory
+        if (!$path) {
+            // Define Path
+            $path = $this->_basePath;
+
+            // Define maximum file size 
+            $maxFilesize = str_replace("M","", ini_get("upload_max_filesize")) * pow(1024, 2);
+
+            // Upload multiple if more than one
+            if (count($files) > 1) {
+                foreach ($files as $file) {
+                    if ($file->getSize() <= $maxFilesize) {
+                        return true;
+                    }
+                }
+            } else {
+                // Grab first index
+                $file = $files[0];
+
+                if ($file->getSize() <= $maxFilesize) {
+                    return true;
+                }
+            }
+        } else {
+            // Define Path
+            $path = $this->_basePath . str_replace('/panel/', '', $path) . '/' . $name;
+
+            // Upload multiple if more than one
+            if (count($files) > 1) {
+                foreach ($files as $file) {
+                    if ($file->getSize() <= $maxFilesize) {
+                        return true;
+                    }
+                }
+            } else {
+                // Grab first index
+                $file = $files[0];
+
+                if ($file->getSize() <= $maxFilesize) {
+                    return true;
+                }
+            }
+        }
+
+        // Return true if no other errors
+        return false;
     }
 
     /**
