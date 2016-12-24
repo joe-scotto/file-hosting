@@ -65,4 +65,30 @@ class Utilities {
         // Return true if all fields are filled in
         return true;
     }
+
+    /**
+     * Converts a value to bytes
+     * @param  string $value Unformatted value
+     * @return int Value in bytes
+     */
+    public static function convertToBytes ($value) {
+        // Trim whitespace
+        $value = trim($value);
+
+        // Grab identifier for switch
+        $identifier = strtolower($value[strlen($value)-1]);
+
+        // Switch on identifier
+        switch ($identifier) {
+            case 'g':
+                $value *= 1000;
+            case 'm':
+                $value *= 1000;
+            case 'k':
+                $value *= 1000;
+        }
+
+        // Return result in bytes
+        return $value;
+    }
 }

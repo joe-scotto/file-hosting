@@ -218,6 +218,7 @@ class Panel {
 
                     // Move to folder if not found there already otherwise create unique name
                     if (!in_array($uploadFileName, $this->listDirectory())) {
+                        //die(var_dump($files->getSize()));
                         $files->moveTo($path . $uploadFileName);   
                     } else {
                         // Define Counter
@@ -321,6 +322,9 @@ class Panel {
                 }
             }
         }
+
+        // Return true if no errors
+        return true;
     }
 
     /**
