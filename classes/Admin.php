@@ -108,6 +108,9 @@ class Admin {
         // Create users directory
         if (!is_dir("../users/" . $username)) {
             if (mkdir("../users/" . $username)) {
+                // Modify directory permissions 
+                chmod($path, 0744);
+
                 return true;
             }
         } else {
