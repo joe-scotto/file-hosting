@@ -23,7 +23,7 @@ class Admin {
         }
 
         // Define Query 
-        $query = "UPDATE " . $GLOBALS['config']['database']['table'] . " SET name = :name, password = :password, admin = :admin WHERE username = :username";
+        $query = "UPDATE `" . $GLOBALS['config']['database']['table'] . "` SET name = :name, password = :password, admin = :admin WHERE username = :username";
 
         // Prepare Query
         $preparedQuery = self::getDatabase()->prepare($query);
@@ -51,7 +51,7 @@ class Admin {
      */
     public static function selectUser ($username) {
         // Define Query 
-        $query = "SELECT * FROM " . $GLOBALS['config']['database']['table'] . " WHERE username = :username";
+        $query = "SELECT * FROM `" . $GLOBALS['config']['database']['table'] . "` WHERE username = :username";
 
         // Prepare Query
         $preparedQuery = self::getDatabase()->prepare($query);
@@ -81,7 +81,7 @@ class Admin {
      */
     public static function checkUsername ($username) {
         // Define Query
-        $query = "SELECT id FROM " . $GLOBALS['config']['database']['table'] . " WHERE username = :username";
+        $query = "SELECT id FROM `" . $GLOBALS['config']['database']['table'] . "` WHERE username = :username";
 
         // Prepare Query
         $preparedQuery = self::getDatabase()->prepare($query);
@@ -127,7 +127,7 @@ class Admin {
      */
     private static function addUser ($name, $username, $password, $admin = null) {
         // Define Query
-        $query = "INSERT INTO " . $GLOBALS['config']['database']['table'] . " (name, username, password, admin) VALUES(:name, :username, :password, :admin)";
+        $query = "INSERT INTO `" . $GLOBALS['config']['database']['table'] . "` (name, username, password, admin) VALUES(:name, :username, :password, :admin)";
 
         // Check if admin checkbox is set and define value
         if ($admin) {

@@ -16,7 +16,7 @@ if ($preparedQuery->execute($queryParams)) {
 
     if (!in_array($GLOBALS['config']['database']['table'], $results)) {
         // Define create table query
-        $createQuery = "CREATE TABLE " . $GLOBALS['config']['database']['table'] . " (
+        $createQuery = "CREATE TABLE `" . $GLOBALS['config']['database']['table'] . "`(
                     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                     `name` text NOT NULL,
                     `username` varchar(18) NOT NULL DEFAULT '',
