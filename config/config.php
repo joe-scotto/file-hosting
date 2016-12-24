@@ -8,6 +8,7 @@ $GLOBALS['config'] = [
         'username' => 'root',
         'password' => 'root'
     ],
+    'homeURL' => 'website home url'
 ];
 
 // Create or update admin

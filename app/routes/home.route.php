@@ -1,11 +1,13 @@
 <?php
-
+//die($GLOBALS['config']['home-url']);
 // Get
 $app->get('/', function ($request, $response) {
     // Check if already logged in
     if (!$_SESSION['user_id']) {
         // Render login if not logged in
-        return $this->view->render($response, 'home/login.twig');
+        return $this->view->render($response, 'home/login.twig', [
+            'homeURL' => $GLOBALS['config']['homeURL']
+        ]);
     } else {
         // Redirect to panel
         return $response->withHeader("Location", "/panel");
@@ -26,14 +28,16 @@ $app->post('/', function ($request, $response) {
         } else {
             // Return login view with error if one is empty
             return $this->view->render($response, 'home/login.twig', [
-                'error' => "Incorrect username or password"
+                'error' => "Incorrect username or password",
+                'homeURL' => $GLOBALS['config']['homeURL']
             ]);
         }
     } else {
         // Return login view with error if one is empty
         return $this->view->render($response, 'home/login.twig', [
             'error' => "Please fill in all fields",
-            'username' => $params['username']
+            'username' => $params['username'],
+            'homeURL' => $GLOBALS['config']['homeURL']
         ]);
     }
 });
