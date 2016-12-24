@@ -179,7 +179,33 @@ class Panel {
                 foreach ($files as $file) {
                     if ($file->getError() === UPLOAD_ERR_OK) {
                         $uploadFileName = $file->getClientFilename();
-                        $file->moveTo($path . $uploadFileName);
+
+                        // Move to folder if not found there already otherwise create unique name
+                        if (!in_array($uploadFileName, $this->listDirectory())) {
+                            $file->moveTo($path . $uploadFileName);   
+                        } else {
+                            // Define Counter
+                            $counter = 1;
+
+                            // Grab position of file extension
+                            $extension_pos = strrpos($uploadFileName, '.');
+
+                            // Define default name of file
+                            $newName = $uploadFileName;
+
+                            // Loop while file name is found in directory
+                            while(in_array(substr($newName, 0, $extension_pos) . '(' . $counter . ')' . substr($newName, $extension_pos), $this->listDirectory()) || in_array($newName, $this->listDirectory())) {
+                                $newName = substr($uploadFileName, 0, $extension_pos) . '(' . $counter . ')' . substr($uploadFileName, $extension_pos);
+                                $counter++;
+                            }
+
+                            // Move file once loop completes and does not exist in directory
+                            if (!in_array($newName, $this->listDirectory())) {
+                                $file->moveTo($path . $newName); 
+                            } else {
+                                die("Error, please try again later or try another file.");
+                            }
+                        }
                     }
                 }
             } else {
@@ -189,7 +215,33 @@ class Panel {
                 // Upload File
                 if ($files->getError() === UPLOAD_ERR_OK) {
                     $uploadFileName = $files->getClientFilename();
-                    $files->moveTo($path . $uploadFileName);
+
+                    // Move to folder if not found there already otherwise create unique name
+                    if (!in_array($uploadFileName, $this->listDirectory())) {
+                        $files->moveTo($path . $uploadFileName);   
+                    } else {
+                        // Define Counter
+                        $counter = 1;
+
+                        // Grab position of file extension
+                        $extension_pos = strrpos($uploadFileName, '.');
+
+                        // Define default name of file
+                        $newName = $uploadFileName;
+
+                        // Loop while file name is found in directory
+                        while(in_array(substr($newName, 0, $extension_pos) . '(' . $counter . ')' . substr($newName, $extension_pos), $this->listDirectory()) || in_array($newName, $this->listDirectory())) {
+                            $newName = substr($uploadFileName, 0, $extension_pos) . '(' . $counter . ')' . substr($uploadFileName, $extension_pos);
+                            $counter++;
+                        }
+
+                        // Move file once loop completes and does not exist in directory
+                        if (!in_array($newName, $this->listDirectory())) {
+                            $files->moveTo($path . $newName); 
+                        } else {
+                            die("Error, please try again later or try another file.");
+                        }
+                    }
                 }
             }
         } else {
@@ -201,7 +253,34 @@ class Panel {
                 foreach ($files as $file) {
                     if ($file->getError() === UPLOAD_ERR_OK) {
                         $uploadFileName = $file->getClientFilename();
-                        $file->moveTo($path . $uploadFileName);
+                        //$file->moveTo($path . $uploadFileName);
+
+                        // Move to folder if not found there already otherwise create unique name
+                        if (!in_array($uploadFileName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                            $file->moveTo($path . $uploadFileName);   
+                        } else {
+                            // Define Counter
+                            $counter = 1;
+
+                            // Grab position of file extension
+                            $extension_pos = strrpos($uploadFileName, '.');
+
+                            // Define default name of file
+                            $newName = $uploadFileName;
+
+                            // Loop while file name is found in directory
+                            while(in_array(substr($newName, 0, $extension_pos) . '(' . $counter . ')' . substr($newName, $extension_pos), $this->listDirectory(str_replace("../users/username", "", $path))) || in_array($newName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                                $newName = substr($uploadFileName, 0, $extension_pos) . '(' . $counter . ')' . substr($uploadFileName, $extension_pos);
+                                $counter++;
+                            }
+
+                            // Move file once loop completes and does not exist in directory
+                            if (!in_array($newName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                                $file->moveTo($path . $newName); 
+                            } else {
+                                die("Error, please try again later or try another file.");
+                            }
+                        }
                     }
                 }
             } else {
@@ -211,7 +290,34 @@ class Panel {
                 // Upload file
                 if ($files->getError() === UPLOAD_ERR_OK) {
                     $uploadFileName = $files->getClientFilename();
-                    $files->moveTo($path . $uploadFileName);
+                    //$files->moveTo($path . $uploadFileName);
+                    
+                    // Move to folder if not found there already otherwise create unique name
+                    if (!in_array($uploadFileName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                        $files->moveTo($path . $uploadFileName);   
+                    } else {
+                        // Define Counter
+                        $counter = 1;
+
+                        // Grab position of file extension
+                        $extension_pos = strrpos($uploadFileName, '.');
+
+                        // Define default name of file
+                        $newName = $uploadFileName;
+
+                        // Loop while file name is found in directory
+                        while(in_array(substr($newName, 0, $extension_pos) . '(' . $counter . ')' . substr($newName, $extension_pos), $this->listDirectory(str_replace("../users/username", "", $path))) || in_array($newName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                            $newName = substr($uploadFileName, 0, $extension_pos) . '(' . $counter . ')' . substr($uploadFileName, $extension_pos);
+                            $counter++;
+                        }
+
+                        // Move file once loop completes and does not exist in directory
+                        if (!in_array($newName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
+                            $files->moveTo($path . $newName); 
+                        } else {
+                            die("Error, please try again later or try another file.");
+                        }
+                    }
                 }
             }
         }
