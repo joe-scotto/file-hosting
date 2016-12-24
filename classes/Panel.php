@@ -98,6 +98,9 @@ class Panel {
             if (!is_dir($path)) {
                 // Create Directory
                 if (mkdir($path)) {
+                    // Modify directory permissions 
+                    chmod($path, 0744);
+                    
                     // Return True
                     return true;
                 } else {

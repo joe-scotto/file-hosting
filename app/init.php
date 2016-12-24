@@ -11,6 +11,15 @@ if (!$_SESSION['user_id']) {
     $_SESSION['user_id'] = null;
 }
 
+// Create users folder if it doesn't exist
+if (!is_dir("../users")) {
+    // Create Directory
+    mkdir("../users");
+
+    // Modify directory permissions
+    chmod("../users", 0744);
+}
+
 // Require Composer Autoloader
 require '../vendor/autoload.php';
 
@@ -19,11 +28,6 @@ require '../config/config.php';
 
 // Unset Messages
 Utilities::removeMessage();
-
-// Create users folder if it doesn't exist
-if (!is_dir("../users")) {
-    mkdir("../users");
-}
 
 // Create new Slim instance
 $app = new \Slim\App([
