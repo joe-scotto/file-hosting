@@ -61,7 +61,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 - [ ] Delete multiple at once
 - [ ] Move files via checkbox
 - [ ] Upload folder via input
-- [ ] Upload progress indicator11
+- [ ] Upload progress indicator
 
 # Sections to refactor / might need refactor
 
