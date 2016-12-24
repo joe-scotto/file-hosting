@@ -43,6 +43,10 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 8. Since the project is built on Slim, your web server must be configured to serve the [/public](https://github.com/joe-scotto/file-hosting/tree/master/public) directory by default. 
 9. The last step is to visit the URL that you installed the plugin on and attempt to login with the credentials your setup within [config.php](https://github.com/joe-scotto/file-hosting/tree/master/config/config.php).
 
+# Options
+
+If you wish, you can add other users as either an admin or non-admin by visiting your */admin*. In order to create other users, you must be an admin. 
+
 # To-Do
 
 - [x] Delete file or folder
