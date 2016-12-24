@@ -26,6 +26,9 @@ require '../vendor/autoload.php';
 // Require Config
 require '../config/config.php';
 
+// Require Setup
+require 'setup.php';
+
 // Unset Messages
 Utilities::removeMessage();
 

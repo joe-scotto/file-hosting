@@ -39,7 +39,7 @@ class User {
      */
     private static function selectUserFromDatabase ($username) {
         // Define Query 
-        $query = "SELECT * FROM `users` WHERE username = :username";
+        $query = "SELECT * FROM " . $GLOBALS['config']['database']['table'] . " WHERE username = :username";
 
         // Prepare Query
         $preparedQuery = self::getDatabase()->prepare($query);
@@ -65,7 +65,7 @@ class User {
      */
     public static function returnUserInfo ($id) {
         // Define Query
-        $query = "SELECT * FROM `users` WHERE id = :id";
+        $query = "SELECT * FROM " . $GLOBALS['config']['database']['table'] . " WHERE id = :id";
 
         // Prepare Query
         $preparedQuery = self::getDatabase()->prepare($query);
