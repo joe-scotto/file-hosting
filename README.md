@@ -12,9 +12,8 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 
 1. Clone repository to local disk, we're going to need to configure your website's settings.
 2. run **composer install** within the cloned directory.
-3. Add the [database file](https://github.com/joe-scotto/file-hosting/blob/master/database/users.sql) to your database. This will soon no longer be necessary once I set it up to automatically create it upon the first launch.
-4. Open up [config/config.php](https://github.com/joe-scotto/file-hosting/blob/master/config/config.php).
-5. Configure your database settings on lines 4 - 12
+3. Open up [config/config.php](https://github.com/joe-scotto/file-hosting/blob/master/config/config.php).
+4. Configure your database settings on lines 4 - 12
 
     ```php
     $GLOBALS['config'] = [
@@ -22,13 +21,14 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
             'host' => '127.0.0.1',
             'database' => 'file-hosting',
             'username' => 'root',
-            'password' => 'root'
+            'password' => 'root',
+            'table' => 'users' // `users` is the default, change this value if you know what you want for your database name 
         ],
         'homeURL' => 'website home url' // URL to visit upon clicking "back to home" 
     ];
     ```
 
-6. Configure your main admin on lines 15 - 20
+5. Configure your main admin on lines 15 - 20
 
     ```php 
     $admin = [
@@ -39,9 +39,9 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
     ];
     ```
 
-7. Copy all files and folders except [/database](https://github.com/joe-scotto/file-hosting/tree/master/database) and [README.md](https://github.com/joe-scotto/file-hosting/blob/master/README.md) to your web server. 
-8. Since the project is built on Slim, your web server must be configured to serve the [/public](https://github.com/joe-scotto/file-hosting/tree/master/public) directory by default. 
-9. The last step is to visit the URL that you installed the plugin on and attempt to login with the credentials your setup within [config.php](https://github.com/joe-scotto/file-hosting/tree/master/config/config.php).
+6. Copy all files and folders except [/database](https://github.com/joe-scotto/file-hosting/tree/master/database) and [README.md](https://github.com/joe-scotto/file-hosting/blob/master/README.md) to your web server. 
+7. Since the project is built on Slim, your web server must be configured to serve the [/public](https://github.com/joe-scotto/file-hosting/tree/master/public) directory by default. 
+8. The last step is to visit the URL that you installed the plugin on and attempt to login with the credentials your setup within [config.php](https://github.com/joe-scotto/file-hosting/tree/master/config/config.php).
 
 # Options
 
