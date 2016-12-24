@@ -54,7 +54,7 @@ If you wish, you can add other users as either an admin or non-admin by visiting
 - [x] Differentiate files and folders via Bootstrap badge
 - [x] Display number of files inside a folder
 - [x] Add admin config
-- [ ] Automatically create "users" database if it doesn't exist
+- [x] Automatically create "users" database if it doesn't exist
 
 # Features to be added after initial release
 
