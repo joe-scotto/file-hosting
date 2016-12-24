@@ -13,7 +13,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 1. Clone repository to local disk, we're going to need to configure your website's settings.
 2. run **composer install** within the cloned directory.
 3. Open up [config/config.php](https://github.com/joe-scotto/file-hosting/blob/master/config/config.php).
-4. Configure your database settings on lines 4 - 12
+4. Configure your database settings on lines 4 - 13
 
     ```php
     $GLOBALS['config'] = [
