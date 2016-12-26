@@ -172,7 +172,7 @@ class Panel {
         // Check if path is root or subdirectory
         if (!$path) {
             // Define Path
-            $path = $this->_basePath;
+            $path = str_replace("%20", " ", $this->_basePath);
 
             // Upload multiple if more than one
             if (count($files) > 1) {
@@ -218,7 +218,6 @@ class Panel {
 
                     // Move to folder if not found there already otherwise create unique name
                     if (!in_array($uploadFileName, $this->listDirectory())) {
-                        //die(var_dump($files->getSize()));
                         $files->moveTo($path . $uploadFileName);   
                     } else {
                         // Define Counter
@@ -247,14 +246,13 @@ class Panel {
             }
         } else {
             // Define Path
-            $path = $this->_basePath . str_replace('/panel/', '', $path) . '/' . $name;
+            $path = str_replace("%20", " ", $this->_basePath . str_replace('/panel/', '', $path) . '/' . $name);
 
             // Upload multiple if more than one
             if (count($files) > 1) {
                 foreach ($files as $file) {
                     if ($file->getError() === UPLOAD_ERR_OK) {
                         $uploadFileName = $file->getClientFilename();
-                        //$file->moveTo($path . $uploadFileName);
 
                         // Move to folder if not found there already otherwise create unique name
                         if (!in_array($uploadFileName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
@@ -291,7 +289,6 @@ class Panel {
                 // Upload file
                 if ($files->getError() === UPLOAD_ERR_OK) {
                     $uploadFileName = $files->getClientFilename();
-                    //$files->moveTo($path . $uploadFileName);
                     
                     // Move to folder if not found there already otherwise create unique name
                     if (!in_array($uploadFileName, $this->listDirectory(str_replace("../users/username", "", $path)))) {
