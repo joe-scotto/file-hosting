@@ -72,7 +72,7 @@ class Panel {
         // Check if path is root or subdirectory
         if (!$path) {
             // Define Path
-            $path = $this->_basePath . $name;
+            $path = trim(str_replace("%20", " ", $this->_basePath . $name));
 
             // Verify path does not exist
             if (!is_dir($path)) {
@@ -92,7 +92,7 @@ class Panel {
             }
         } else {
             // Define Path
-            $path = $this->_basePath . str_replace('/panel', '', $path) . '/' . $name;
+            $path = trim(str_replace("%20", " ", $this->_basePath . str_replace('/panel', '', $path) . '/' . $name));
 
             // Verify path does not exist
             if (!is_dir($path)) {
