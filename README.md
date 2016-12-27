@@ -2,9 +2,9 @@
 
 A simple file hosting plugin that allows you to easily add file hosting to your site. This plugin is intended for people who want to have a place on their website where they can upload files. This is not intended for a full-fledged file hosting website which the sole purpose of said website is hosting files.
 
-# Video 
+# Demo
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=uaWqvplSM3c" target="_blank"><img src="https://img.youtube.com/vi/uaWqvplSM3c/0.jpg" alt="Video" width="240" height="180" border="10" /></a>
+<a href="https://hosting-demo.joescotto.net">https://hosting-demo.joescotto.net</a>
 
 # Requirements
 
