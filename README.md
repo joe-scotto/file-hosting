@@ -4,7 +4,7 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
 
 # Video 
 
-[![Video](https://img.youtube.com/vi/uaWqvplSM3c/0.jpg)](https://www.youtube.com/watch?v=uaWqvplSM3c)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=uaWqvplSM3c" target="_blank"><img src="https://img.youtube.com/vi/uaWqvplSM3c/0.jpg" alt="Video" width="240" height="180" border="10" /></a>
 
 # Requirements
 
