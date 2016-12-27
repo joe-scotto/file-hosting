@@ -18,13 +18,13 @@ A simple file hosting plugin that allows you to easily add file hosting to your 
     ```php
     $GLOBALS['config'] = [
         'database' => [
-            'host' => '127.0.0.1',
-            'database' => 'file-hosting',
-            'username' => 'root',
-            'password' => 'root',
-            'table' => 'users' // `users` is the default, change this value if you know what you want for your database name 
+            'host' => 'db-host-name',
+            'database' => 'db-name',
+            'username' => 'db-username',
+            'password' => 'db-password',
+            'table' => 'table-name' // `users` is the default, change this value if you know what you want for your database name 
         ],
-        'homeURL' => 'website home url' // URL to visit upon clicking "back to home" 
+        'homeURL' => 'website-home-url' // URL to visit upon clicking "back to home" 
     ];
     ```
 
@@ -59,7 +59,7 @@ If you wish, you can add other users as either an admin or non-admin by visiting
 # Features to be added after initial release
 
 - [ ] Add sorting to panel
-- [ ] Download entire folders1
+- [ ] Download entire folders
 - [ ] Add themes (Dark, Light, Etc)
 - [ ] Rename files or folders
 - [ ] Delete multiple at once
